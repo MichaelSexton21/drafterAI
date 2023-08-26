@@ -63,26 +63,30 @@ const Home: NextPage = () => {
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
+    const s = "";
     for (let i = 0; i < choices.length; i++) {
       if(choices[i] == true){
-        choicesString[i]
-        const res = await fetch("/api/generate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ imageUrl: fileUrl, stringChoice: choicesString[i] }),
-        });
-    
-        let newPhoto = await res.json();
-        if (newPhoto === "The request has been rate limited") {
-          setError(
-            "The request has been rate limited. Please try again in a few minutes."
-          );
-        } else {
-          setRestoredImage(newPhoto);
-        }    
+        // index += 1
+        s + choicesString[i] + ","
+        // if index > 3 
       }
+    }    
+    // get rid of the last , in a thing
+      const res = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ imageUrl: fileUrl, stringChoice: s}),
+    });
+
+    let newPhoto = await res.json();
+    if (newPhoto === "The request has been rate limited") {
+      setError(
+        "The request has been rate limited. Please try again in a few minutes."
+      );
+    } else {
+      setRestoredImage(newPhoto);
     }    
     setLoading(false);
   }
