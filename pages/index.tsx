@@ -30,10 +30,10 @@ const Home: NextPage = () => {
           Here to help Artists find their new Aesthetic today!
         </p>
         <Link
-          className="bg-black rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
+          className="bg-black rounded-full text-pink font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
           href="/restore"
         >
-          Upload your designs
+          Upload your Design
         </Link>
         <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
           <div className="flex flex-col space-y-10 mt-4">
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <p className="text-gray-500 mt-3 mb-10 sm:text-base text-sm">
-          {/* THERE IS NOTHING IN HERE RIGHT NOW */}
+            {/* THERE IS NOTHING IN HERE RIGHT NOW */}
           </p>
         </div>
       </main>
