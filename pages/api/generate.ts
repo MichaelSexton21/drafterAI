@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import Replicate from "replicate";
+
+const replicate = new Replicate({
+  auth: process.env.REPLICATE_API_TOKEN!,
+});
+
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -16,24 +22,34 @@ export default async function handler(
   const stringChoice = req.body.stringChoice;
   console.log({ imageUrl, stringChoice });
   // POST request to Replicate to start the image restoration generation process
-  let startResponse = await fetch(
-    "https://ar2427--controlnet-cli-get-data-dev.modal.run",
+  const output = await replicate.run(
+    "jagilley/controlnet-canny:aff48af9c68d162388d230a2ab003f68d2638d88307bdaf1c2f1ac95079c9613",
     {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+      input: {
+        image: imageUrl,
+        prompt: stringChoice,
       },
-      body: JSON.stringify({
-        img_url: imageUrl,
-        choices: stringChoice,
-      }),
     }
   );
-  console.log({ startResponse });
-  let restoredImage = await startResponse.json();
-  console.log({ restoredImage });
-
-  res
-    .status(200)
-    .json(restoredImage ? restoredImage : "Failed to restore image");
+  console.log({ output });
+  // Modal code
+  // let startResponse = await fetch(
+  //   "https://ar2427--controlnet-cli-get-data-dev.modal.run",
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       img_url: imageUrl,
+  //       choices: stringChoice,
+  //     }),
+  //   }
+  // );
+  // console.log({ startResponse });
+  // let restoredImage = await startResponse.json();
+  // console.log({ restoredImage });
+  // @ts-ignore
+  res.status(200).json(output[1] ? output[1] : "Failed to get image");
+  //.json(restoredImage ? restoredImage : "Failed to restore image");
 }

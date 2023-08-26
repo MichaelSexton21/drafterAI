@@ -14,7 +14,9 @@ import Toggle from "../components/Toggle";
 import downloadPhoto from "../utils/downloadPhoto";
 
 // Configuration for the uploader
-const uploader = Uploader({ apiKey: process.env.NEXT_PUBLIC_UPLOAD_API_KEY || "free" });
+const uploader = Uploader({
+  apiKey: process.env.NEXT_PUBLIC_UPLOAD_API_KEY || "free",
+});
 const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
@@ -31,19 +33,23 @@ const Home: NextPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   // HERE ARE ALL THE VARIBALES FOR OUR SHITSHOW
-  const [film, setFilm] = useState<boolean>(false)
-  const [pastels, setPastel] = useState<boolean>(false)
-  const [barbie, setBarbie] = useState<boolean>(false)
-  const [neutral, setNeutral] = useState<boolean>(false)
-  const [rustic, setRustic] = useState<boolean>(false)
-  const [clean, setClean] = useState<boolean>(false)
+  const [film, setFilm] = useState<boolean>(false);
+  const [pastels, setPastel] = useState<boolean>(false);
+  const [barbie, setBarbie] = useState<boolean>(false);
+  const [neutral, setNeutral] = useState<boolean>(false);
+  const [rustic, setRustic] = useState<boolean>(false);
+  const [clean, setClean] = useState<boolean>(false);
 
   //ARRAY OF VARIABLES
-  const choices = [film, pastels, barbie, neutral, rustic, clean]
-  const choicesString = ["film", "pastels", "barbie", "neutral", "rustic", "clean"]
-
-
-
+  const choices = [film, pastels, barbie, neutral, rustic, clean];
+  const choicesString = [
+    "grainy color film, vsco aesthetic, muted colors",
+    "pastel colors, light pinks, light blues, light purples, light oranges, matte",
+    "barbie pinks, girly vibes, barbie aesthetic",
+    "minimalist, neutral tones, simple design, beige and tan",
+    "rustic, warm tones, oranges, browns, beige, minimalist",
+    "wedding vibes, bright whites, clean aesthetic, natural, light background",
+  ];
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -65,19 +71,17 @@ const Home: NextPage = () => {
     setLoading(true);
     const s = "";
     for (let i = 0; i < choices.length; i++) {
-      if(choices[i] == true){
-        // index += 1
-        s + choicesString[i] + ","
-        // if index > 3 
+      if (choices[i] == true) {
+        s + choicesString[i];
       }
-    }    
+    }
     // get rid of the last , in a thing
-      const res = await fetch("/api/generate", {
+    const res = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageUrl: fileUrl, stringChoice: "rustic,"}),
+      body: JSON.stringify({ imageUrl: fileUrl, stringChoice: s }),
     });
 
     let newPhoto = await res.json();
@@ -87,7 +91,7 @@ const Home: NextPage = () => {
       );
     } else {
       setRestoredImage(newPhoto);
-    }    
+    }
     setLoading(false);
   }
 
@@ -102,87 +106,126 @@ const Home: NextPage = () => {
       <div></div>
       <div></div>
       <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
-          Stylize your image!
+        Stylize your image!
       </h1>
       <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
-          <div className="flex flex-col space-y-10 mt-4">
-            <div className="flex sm:space-x-10 sm:flex-row flex-col">     
-              {/* Balloon 1 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setFilm(!film)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b1.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${film ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Film</h2>
-              </div>
-              {/* Balloon 2 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setPastel(!pastels)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b2.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${pastels ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Pastels</h2>
-
-              </div>
-              {/* Balloon 3 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setBarbie(!barbie)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b3.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${barbie ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Barbie</h2>
-              </div>
+        <div className="flex flex-col space-y-10 mt-4">
+          <div className="flex sm:space-x-10 sm:flex-row flex-col">
+            {/* Balloon 1 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setFilm(!film)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b1.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  film
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Film</h2>
             </div>
-            <div className="flex sm:space-x-10 sm:flex-row flex-col">     
-              {/* Balloon 4 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setNeutral(!neutral)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b4.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${neutral ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Neutral</h2>
-              </div>
-              {/* Balloon 5 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setRustic(!rustic)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b5.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${rustic ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Rustic</h2>
-
-              </div>
-              {/* Balloon 6 */}
-              <div className="sm:mt-0 mt-8 hover:cursor-pointer" onClick={() => setClean(!clean)}>
-                <Image
-                  alt="Restored photo of my bro"
-                  width={320}
-                  height={320}
-                  src="/b6.png"
-                  className={`w-24 h-24 sm:mt-0 mt-2 ${clean ? "border-4 border-[#FF8C91]" : "border-4 border-transparent" } rounded-3xl`}
-                />
-                <h2 className="mb-1 font-medium text-center">Clean</h2>
-              </div>
+            {/* Balloon 2 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setPastel(!pastels)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b2.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  pastels
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Pastels</h2>
+            </div>
+            {/* Balloon 3 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setBarbie(!barbie)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b3.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  barbie
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Barbie</h2>
+            </div>
+          </div>
+          <div className="flex sm:space-x-10 sm:flex-row flex-col">
+            {/* Balloon 4 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setNeutral(!neutral)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b4.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  neutral
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Neutral</h2>
+            </div>
+            {/* Balloon 5 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setRustic(!rustic)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b5.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  rustic
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Rustic</h2>
+            </div>
+            {/* Balloon 6 */}
+            <div
+              className="sm:mt-0 mt-8 hover:cursor-pointer"
+              onClick={() => setClean(!clean)}
+            >
+              <Image
+                alt="Restored photo of my bro"
+                width={320}
+                height={320}
+                src="/b6.png"
+                className={`w-24 h-24 sm:mt-0 mt-2 ${
+                  clean
+                    ? "border-4 border-[#FF8C91]"
+                    : "border-4 border-transparent"
+                } rounded-3xl`}
+              />
+              <h2 className="mb-1 font-medium text-center">Clean</h2>
             </div>
           </div>
         </div>
+      </div>
 
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4">
-
         <ResizablePanel>
           <AnimatePresence exitBeforeEnter>
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
@@ -280,7 +323,7 @@ const Home: NextPage = () => {
           </AnimatePresence>
         </ResizablePanel>
       </main>
-        
+
       <Footer />
     </div>
   );
