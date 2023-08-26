@@ -18,7 +18,7 @@ export default async function handler(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-    },
+    },  
     body: JSON.stringify({ 
       img_url: imageUrl, choices: "barbie pinks, girly vibes, barbie aesthetic" 
     }),

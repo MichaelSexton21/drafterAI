@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Aestetical.ly</title>
+        <title>Aestetic.ly</title>
       </Head>
 
       <Header />
@@ -21,16 +21,17 @@ const Home: NextPage = () => {
           <div>
           <span className="relative whitespace-nowrap text-[#E19CFA]">
             <SquigglyLines />
-            <span className="relative">Perfect Content</span>
+            <span className="relative">perfect content</span>
           </span>{" "}
           </div>
-          in an Instant.
+          in an instant.
         </h1>
         <p className="mx-auto mt-12 max-w-xl text-lg text-slate-700 leading-7">
-          Here to help Artists find their new Aesthetic today!
+          Match your photos to a theme before you post to your socials. 
+          <div>  Increase your engagement. </div>
         </p>
         <Link
-          className="bg-black rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
+          className="bg-[#E19CFA] rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
           href="/restore"
         >
           Upload your Design
@@ -49,7 +50,7 @@ const Home: NextPage = () => {
                 />
               </div>
               <div className="sm:mt-0 mt-8">
-                <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
+                <h2 className="mb-1 font-medium text-lg">Social Media Aesthetic</h2>
                 <Image
                   alt="Restored photo of my bro"
                   width={320}
