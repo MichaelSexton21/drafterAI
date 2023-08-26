@@ -70,9 +70,10 @@ const Home: NextPage = () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
     const s = "";
+    let a = 0;
     for (let i = 0; i < choices.length; i++) {
       if (choices[i] == true) {
-        s + choicesString[i];
+        a = i;
       }
     }
     // get rid of the last , in a thing
@@ -81,7 +82,10 @@ const Home: NextPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageUrl: fileUrl, stringChoice: s }),
+      body: JSON.stringify({
+        imageUrl: fileUrl,
+        stringChoice: choicesString[a],
+      }),
     });
 
     let newPhoto = await res.json();
