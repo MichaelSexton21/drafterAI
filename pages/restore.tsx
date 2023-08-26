@@ -30,12 +30,20 @@ const Home: NextPage = () => {
   const [sideBySide, setSideBySide] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  // HERE ARE ALL THE VARIBALES FOR OUR SHITSHOW
   const [film, setFilm] = useState<boolean>(false)
   const [pastels, setPastel] = useState<boolean>(false)
   const [barbie, setBarbie] = useState<boolean>(false)
   const [neutral, setNeutral] = useState<boolean>(false)
   const [rustic, setRustic] = useState<boolean>(false)
   const [clean, setClean] = useState<boolean>(false)
+
+  //ARRAY OF VARIABLES
+  const choices = [film, pastels, barbie, neutral, rustic, clean]
+  const choicesString = ["film", "pastels", "barbie", "neutral", "rustic", "clean"]
+
+
+
 
   const UploadDropZone = () => (
     <UploadDropzone
@@ -55,22 +63,27 @@ const Home: NextPage = () => {
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setLoading(true);
-    const res = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ imageUrl: fileUrl,  }),
-    });
-
-    let newPhoto = await res.json();
-    if (newPhoto === "The request has been rate limited") {
-      setError(
-        "The request has been rate limited. Please try again in a few minutes."
-      );
-    } else {
-      setRestoredImage(newPhoto);
-    }
+    for (let i = 0; i < choices.length; i++) {
+      if(choices[i] == true){
+        choicesString[i]
+        const res = await fetch("/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ imageUrl: fileUrl, stringChoice: choicesString[i] }),
+        });
+    
+        let newPhoto = await res.json();
+        if (newPhoto === "The request has been rate limited") {
+          setError(
+            "The request has been rate limited. Please try again in a few minutes."
+          );
+        } else {
+          setRestoredImage(newPhoto);
+        }    
+      }
+    }    
     setLoading(false);
   }
 

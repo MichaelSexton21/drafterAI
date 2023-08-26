@@ -12,6 +12,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const imageUrl = req.body.imageUrl;
+  const stringChoice = req.body.stringChoice;
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://ar2427--get-data-py-square-dev.modal.run/", {
     method: "POST",
