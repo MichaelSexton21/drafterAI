@@ -57,11 +57,53 @@ const Home: NextPage = () => {
                   src="/profile.png"
                   className="w-80 h-80 rounded-2xl sm:mt-0 mt-2"
                 />
+              </div>          
+          </div>
+            <div className="flex sm:space-x-2 sm:flex-row flex-col"> 
+                        {/* Balloon 1 */}
+                        <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b1.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+              </div>
+              {/* Balloon 2 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b2.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+              </div>
+              {/* Balloon 3 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b3.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+              </div>
+              {/* Balloon 4 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b4.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
               </div>
             </div>
           </div>
           <p className="text-gray-500 mt-3 mb-10 sm:text-base text-sm">
-            Words
+          {/* THERE IS NOTHING IN HERE RIGHT NOW */}
           </p>
         </div>
       </main>
