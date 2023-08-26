@@ -11,21 +11,23 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>DrafterAI</title>
+        <title>Aestetical.ly</title>
       </Head>
 
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-24 mt-20">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
-          Drafter.AI{" "}
-          <span className="relative whitespace-nowrap text-[#3290EE]">
+          Curate the {" "}
+          <div>
+          <span className="relative whitespace-nowrap text-[#E19CFA]">
             <SquigglyLines />
-            <span className="relative">using AI</span>
+            <span className="relative">Perfect Content</span>
           </span>{" "}
-          for Artists.
+          </div>
+          in an Instant.
         </h1>
         <p className="mx-auto mt-12 max-w-xl text-lg text-slate-700 leading-7">
-          Tired of your clients not knowing what they want? – DrafterAI is your new best firend!
+          Here to help Artists find their new Aesthetic today!
         </p>
         <Link
           className="bg-black rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
