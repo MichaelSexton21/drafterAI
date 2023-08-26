@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <p className="text-gray-500 mt-3 mb-10 sm:text-base text-sm">
-            Check out this photo restoration of my little brother.
+            Words
           </p>
         </div>
       </main>
