@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 type Data = string;
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
+    stringChoice: string;
     imageUrl: string;
   };
 }
