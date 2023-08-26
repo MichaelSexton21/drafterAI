@@ -60,7 +60,7 @@ const Home: NextPage = () => {
                 />
               </div>          
           </div>
-            <div className="flex sm:space-x-2 sm:flex-row flex-col"> 
+            <div className="flex sm:space-x-12 sm:flex-row flex-col justify-center"> 
               {/* Balloon 1 */}
               <div className="sm:mt-0 mt-8">
                 <Image

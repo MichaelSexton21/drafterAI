@@ -280,7 +280,6 @@ const Home: NextPage = () => {
           </AnimatePresence>
         </ResizablePanel>
       </main>
-        
       <Footer />
     </div>
   );
