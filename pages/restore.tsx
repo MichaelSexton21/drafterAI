@@ -176,6 +176,82 @@ const Home: NextPage = () => {
           </AnimatePresence>
         </ResizablePanel>
       </main>
+        <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
+          <div className="flex flex-col space-y-10 mt-4">
+            <div className="flex sm:space-x-10 sm:flex-row flex-col">     
+              {/* Balloon 1 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b1.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Film</h2>
+              </div>
+              {/* Balloon 2 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b2.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Pastels</h2>
+
+              </div>
+              {/* Balloon 3 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b3.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Barbie</h2>
+              </div>
+            </div>
+            <div className="flex sm:space-x-10 sm:flex-row flex-col">     
+              {/* Balloon 4 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b4.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Neutral</h2>
+              </div>
+              {/* Balloon 5 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b5.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Rustic</h2>
+
+              </div>
+              {/* Balloon 6 */}
+              <div className="sm:mt-0 mt-8">
+                <Image
+                  alt="Restored photo of my bro"
+                  width={320}
+                  height={320}
+                  src="/b6.png"
+                  className="w-20 h-20 rounded-2xl sm:mt-0 mt-2"
+                />
+                <h2 className="mb-1 font-medium text-center">Clean</h2>
+              </div>
+            </div>
+          </div>
+        </div>
       <Footer />
     </div>
   );

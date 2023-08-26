@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           Here to help Artists find their new Aesthetic today!
         </p>
         <Link
-          className="bg-black rounded-full text-pink font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
+          className="bg-black rounded-full text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80"
           href="/restore"
         >
           Upload your Design
@@ -60,8 +60,8 @@ const Home: NextPage = () => {
               </div>          
           </div>
             <div className="flex sm:space-x-2 sm:flex-row flex-col"> 
-                        {/* Balloon 1 */}
-                        <div className="sm:mt-0 mt-8">
+              {/* Balloon 1 */}
+              <div className="sm:mt-0 mt-8">
                 <Image
                   alt="Restored photo of my bro"
                   width={320}
