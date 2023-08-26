@@ -8,19 +8,19 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Restore your old face photos and keep the memories alive."
+            content="Curate and generate ideas for your social media content."
           />
-          <meta property="og:site_name" content="restorePhotos.io" />
+          <meta property="og:site_name" content="aesthetic.ly" />
           <meta
             property="og:description"
-            content="Restore your old face photos and keep the memories alive."
+            content="Curate and generate ideas for your social media content."
           />
-          <meta property="og:title" content="Face Photo Restorer" />
+          <meta property="og:title" content="Aesthetic Picker" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Face Photo Restorer" />
+          <meta name="twitter:title" content="Aesthetic Picker" />
           <meta
             name="twitter:description"
-            content="Restore your old photos and keep the memories alive."
+            content="Curate and generate ideas for your social media content."
           />
           <meta
             property="og:image"
